@@ -106,9 +106,9 @@ class Hunter:
         self.genes = Genes(0, 0, 0, 0)
         self.kills: int = 0
         self.pos: List[int] = [x, y]
-    
+    e
     def set_pos():
-        self.pos: List[int] = [x, y]
+        self.pos = [self.x, self.y]
     
     def upgrade(self):
         pass
@@ -127,7 +127,7 @@ class Genes:
           
           
 def pos_taken(xy, pos_list):
-    done = True
+    notdone = True
     while notdone:
         if xy in pos_list:
             xy = [random.randint(0, 100), random.randint(0, 100)]
