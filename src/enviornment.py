@@ -49,7 +49,7 @@ class Environment:
                 print("Agents already created")
                 return True
             # else: create game
-            positions = [[random.randint(0, self.size) for j in range(0, 2)] for i in range(0, self.agents_total)]i
+            positions = [[random.randint(0, self.size) for j in range(0, 2)] for i in range(0, self.agents_total)]
             for j, i in enumerate(positions):
                     # Creation of agents
                     # Create prey
