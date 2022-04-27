@@ -1,3 +1,4 @@
+from typing import List, Dict, Object
 import random
 import hunter
 import prey
@@ -32,7 +33,7 @@ def create_list(iterations: int, animal_type: str) -> List[List[int]]:
     return list_pos
 
 
-def create_game(num_hunter: int, num_prey: int) -> (List[object], List[object], List[List[int]]):
+def create_game(num_hunter: int, num_prey: int) -> (List[int], List[int], List[List[int]]):
     """
     Creates the game
     :param num_hunter: Number of hunters
@@ -154,7 +155,9 @@ for i in range(0, NUM_ITERATIONS): # O(2^n)
             # Check surroundings
             check_sur(hunter_pos[0], hunter_pos[1], hunter)
    """         
+def run_simulation():
     
+
 
         
 main()
