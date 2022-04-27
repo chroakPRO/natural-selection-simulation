@@ -44,18 +44,12 @@ class Prey:
         self.genes = []
         self.NUM_GENES = 0
         self.pos: List[int] = [x, y]
-        
+        self.killed = False
     
     def set_pos(self):
         self.pos: List[int] = [self.x, self.y]
     
         
-    
-    def calc_fitness(self, gen_array: List[int], days_survived: int) -> int:
-        self.days_survived = days_survived
-        self.genes = gen_array
-        self.fitness = (self.days_survived / 0,45) * (self.genes[0] / 0.09) * (self.enemy_close / 0.02)
-        return self.fitness
     
     # This needs total rework.
     def mutation(self, xx_genes: List[int], xy_genes: List[int]):        
@@ -81,14 +75,28 @@ class Prey:
                 child01[i] = np.random.sample()
                 child02[i] = np.random.sample()
             
-            
+           
+    def kill(self) -> bool:
+        """
+        Kills the prey.
+        """
+        self.killed = True
+        return True
+
     def set_random_genes(self):
+        """
+        Sets random genes for the prey.
+        """
         self.genes = []
         for i in range(0, self.NUM_GENES):
             self.genes[i] = np.random.sample()
     
-    def move(self, health_left: int) -> bool:
-        if health_left > 0:
+    def move(self) -> bool:
+        """
+        Moves the prey.
+        """
+
+        if not self.killed:
             # Main code (Calculates how to move.)
             
             return True

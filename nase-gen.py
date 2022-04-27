@@ -42,11 +42,11 @@ class Prey:
         self.days_survived: int = 0
         self.enemy_close: int = 0
         self.genes = []
-        self.NUM_GENES = NUM_GENESö
+        self.NUM_GENES = NUM_GENES
         self.pos: List[int] = [x, y]
         
     
-    def set_pos():
+    def set_pos(self, x: int, y: int):
         self.pos: List[int] = [x, y]
         
     
