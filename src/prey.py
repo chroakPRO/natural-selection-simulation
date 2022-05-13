@@ -32,7 +32,6 @@ Enemy Close: How many times was the prey within X amount of blocks of hunter. (D
 """
 
 
-
 class Prey:
     
     def __init__(self, x: int, y: int):
@@ -48,9 +47,7 @@ class Prey:
     
     def set_pos(self):
         self.pos: List[int] = [self.x, self.y]
-    
-        
-    
+
     # This needs total rework.
     def mutation(self, xx_genes: List[int], xy_genes: List[int]):        
         # Children
@@ -74,8 +71,7 @@ class Prey:
             else:
                 child01[i] = np.random.sample()
                 child02[i] = np.random.sample()
-            
-           
+
     def kill(self) -> bool:
         """
         Kills the prey.
@@ -101,3 +97,5 @@ class Prey:
             
             return True
         else: return False
+
+

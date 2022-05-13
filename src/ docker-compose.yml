@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+
+  db:
+    volumes:
+      - test123:/var/lib/postgresql/data
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+
+volumes:
+  test123:
