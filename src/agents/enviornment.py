@@ -3,8 +3,8 @@ from typing import List, Dict, Tuple
 import numpy as np
 import random
 import genes
-from prey import Prey
-from hunter import Hunter
+from agents.prey import Prey
+from agents.hunter import Hunter
 
 
 # Environment class

@@ -1,7 +1,7 @@
 from typing import List, Dict
 import numpy as np
 import random
-import genes
+import agents.genes as genes
 
 
 class Hunter:
