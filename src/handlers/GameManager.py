@@ -15,4 +15,4 @@ class GameManager:
         self.game_board = self.environment.world
 
     def initial(self):
-        pass
+        pass        
