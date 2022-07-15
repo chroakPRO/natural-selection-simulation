@@ -10,9 +10,9 @@ So you easier can understand my code.
 - Prey
 I need to create an attribute list for prey.
 What every "fitness parameters" does in practis.
-Ex: if you have lets say 52 as speed attribute/rating. 
+Ex: if you have lets say 52 as speed attribute/rating.
 And I create a rule that says if you have over 50 in speed...
-increase the chance of escape by 15%. 
+increase the chance of escape by 15%.
 
 I need to define this beforehand so i more easily modify the fitenss/mutation functions.
 
@@ -34,7 +34,7 @@ Enemy Close: How many times was the prey within X amount of blocks of hunter. (D
 
 
 class Prey:
-    
+
     def __init__(self, x: int, y: int):
         self.x: int = x
         self.y: int = y
@@ -44,30 +44,27 @@ class Prey:
         self.genes = []
         self.NUM_GENES = NUM_GENES
         self.pos: List[int] = [x, y]
-        
-    
+
     def set_pos(self, x: int, y: int):
         self.pos: List[int] = [x, y]
-        
-    
+
     def calc_fitness(self, gen_array: List[int], days_survived: int) -> int:
         self.days_survived = days_survived
         self.genes = gen_array
         self.fitness = (self.days_survived / 0,45) * (self.genes[0] / 0.09) * (self.enemy_close / 0.02)
         return self.fitness
-    
+
     # This needs total rework.
-    def mutation(self, xx_genes: List[int], xy_genes: List[int]):        
+    def mutation(self, xx_genes: List[int], xy_genes: List[int]):
         # Children
         child01 = []
         child02 = []
-        
+
         # Single Point Crossover every parent is in pair and will produce 2 childern.
         gen_len = len(xx_genes)
         crossover_point = random.randint(0, gen_len)
-        
-        for i in range(gen_len):     
-            # Cross-over-point - 
+
+        for i in range(gen_len):
             if i >= crossover_point:
                 # Picks the best one.
                 if xx_genes[i] > xy_genes[i]:
@@ -79,26 +76,24 @@ class Prey:
             else:
                 chlild01[i] = np.random.sample()
                 child02[i] = np.random.sample()
-            
-            
+
     def set_random_genes(self):
         self.genes = []
         for i in range(0, self.NUM_GENES):
             self.genes[i] = np.random.sample()
-    
+
     def move(self, health_left: int) -> bool:
         if health_left > 0:
             # Main code (Calculates how to move.)
-            
+
             return True
         else: return False
-        
-        
+
 # The hunter dosen't have children.
 # They are the same throughout the whole simulation.
 # But they do get improvement if they kill alot.
 class Hunter:
-    
+
     def __init__(self, x: int, y: int):
         self.x: int = x
         self.y: int = y
@@ -109,23 +104,18 @@ class Hunter:
     e
     def set_pos():
         self.pos = [self.x, self.y]
-    
+
     def upgrade(self):
         pass
-        
-        
-        
-        
+
 class Genes:
-    
+
     def __init__(self, health: int, weight: int, attack: int, speed: int):
         self.health: int = health
         self.weight: int = weight
         self.attack: int = attack
         self.speed: int = speed
-          
-          
-          
+
 def pos_taken(xy, pos_list):
     notdone = True
     while notdone:
@@ -150,7 +140,7 @@ def create_game(num_hunter, num_prey):
             # Let check if this position is already taken.
             x = random.randint(0, 100)
             y = random.randint(0, 100)
-            x, y = pos_taken([x, y], pos_taken) 
+            x, y = pos_taken([x, y], pos_taken)
             hunters_666[i].x = x
             hunters_666[i].y = y
             game[x][y] = 666
@@ -158,18 +148,18 @@ def create_game(num_hunter, num_prey):
         prey_404.append(Prey(999, 999))
         x = random.randint(0, 100)
         y = random.randint(0, 100)
-        x, y = pos_taken([x, y], pos_taken) 
+        x, y = pos_taken([x, y], pos_taken)
         prey_404[i].x = x
         prey_404[i].y = y
         game_404[x][y] = 404
     return hunters, prey, game
-  
+
 def check_sur(col, row, lists):
     above_below = [lists[col - 1][row], lists[col + 1][row]] # col
     left_right = [lists[col][row - 1], lists[col][row + 1]] # row
-    
+
     # 32, 10, 12, 30
-    diagnoal = [lists[col + 1][row + 1], lists[col - 1][row - 1], 
+    diagnoal = [lists[col + 1][row + 1], lists[col - 1][row - 1],
                 lists[col + 1][row - 1], lists[col - 1][row +  1]]
     print("Above Below -> {} \n".format(above_below))
     print("Left Right -> {} \n".format(left_right))
@@ -182,15 +172,14 @@ def main():
     NUM_HUNTERS = 2
     NUM_PREY = 10
     # 100x100 2D array. Gameboard print(len(game[0])) -- print(len(game))
-    
+
     # OLD CODE.
     # hunter_pos = [[random.randint(0, 100), random.randint(0, 100)] for i in range(0, NUM_HUNTERS)]
     # prey_pos = [[random.randint(0, 100), random.randint(0, 100)] for i in range(0, NUM_PREY)]
-    
-    # OLD CODE.
+      # OLD CODE.
     # hunter = [Hunter(999, 999) for i in range(0, NUM_HUNTERS)]
     # prey = [Prey() for i in range(0, NUM_PREY)]
-    
+
     # Like this
     hunter, prey, game = create_game(NUM_HUNTERS, NUM_PREY)
 
@@ -205,12 +194,7 @@ def main():
             hunter_pos = i.pos
             # Check surroundings
             check_sur(hunter_pos[0], hunter_pos[1], hunter)
-            
-            
-            
-            
-        
-        
+
 main()
 
 
