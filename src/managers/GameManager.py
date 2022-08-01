@@ -8,7 +8,6 @@ class GameManager:
         self.game.game_manager = self
         self.game.start_game()
 
-
         # Settings up enviornment
         # def __init__(self, size: int, num_prey: int, num_hunter: int):
         self.environment = env.Enviornment(10, 3, 1)
