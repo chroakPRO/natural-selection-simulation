@@ -33,7 +33,6 @@ Enemy Close: How many times was the prey within X amount of blocks of hunter. (D
 
 
 class Prey:
-
     def __init__(self, x: int, y: int):
         """_summary_
 
@@ -71,8 +70,11 @@ class Prey:
         """
         self.days_survived = days_survived
         self.GENES = gen_array
-        self.FITNESS = (self.days_survived / 0, 45) * \
-            (self.GENES[0] / 0.09) * (self.enemy_close / 0.02)
+        self.FITNESS = (
+            (self.days_survived / 0, 45)
+            * (self.GENES[0] / 0.09)
+            * (self.enemy_close / 0.02)
+        )
         return self.FITNESS
 
     # This needs total rework.
@@ -117,13 +119,13 @@ class Prey:
         else:
             return False
 
+
 # The hunter dosen't have children.
 # They are the same throughout the whole simulation.
 # But they do get improvement if they kill alot.
 
 
 class Hunter:
-
     def __init__(self, x: int, y: int):
         self.x: int = x
         self.y: int = y
@@ -131,6 +133,7 @@ class Hunter:
         self.GENES = GENES(0, 0, 0, 0)
         self.kills: int = 0
         self.POS: List[int] = [x, y]
+
     e
 
     def set_POS():
@@ -141,7 +144,6 @@ class Hunter:
 
 
 class GENES:
-
     def __init__(self, HEALTH: int, WEIGHT: int, ATTACK: int, SPEED: int):
         self.HEALTH: int = HEALTH
         self.WEIGHT: int = WEIGHT
@@ -194,8 +196,12 @@ def check_sur(col, row, lists):
     left_right = [lists[col][row - 1], lists[col][row + 1]]  # row
 
     # 32, 10, 12, 30
-    diagnoal = [lists[col + 1][row + 1], lists[col - 1][row - 1],
-                lists[col + 1][row - 1], lists[col - 1][row + 1]]
+    diagnoal = [
+        lists[col + 1][row + 1],
+        lists[col - 1][row - 1],
+        lists[col + 1][row - 1],
+        lists[col - 1][row + 1],
+    ]
     print("Above Below -> {} \n".format(above_below))
     print("Left Right -> {} \n".format(left_right))
     print("Diagnoal, RB LT RT LB -> {} \n".format(diagnoal))
